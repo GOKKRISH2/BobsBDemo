@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bobs-burgers" translatesAutoresizingMaskIntoConstraints="NO" id="MFz-x5-4MO">
+                                <rect key="frame" x="113" y="259" width="149" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MFz-x5-4MO" secondAttribute="height" multiplier="1:1" id="pjh-15-wFg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Bob's Burgers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zl-BI-yrm">
+                                <rect key="frame" x="70.5" y="458" width="234" height="48"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MFz-x5-4MO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="OEY-Pg-Mv0"/>
+                            <constraint firstItem="0zl-BI-yrm" firstAttribute="top" secondItem="MFz-x5-4MO" secondAttribute="bottom" constant="50" id="PvL-ff-cFe"/>
+                            <constraint firstItem="MFz-x5-4MO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qu6-Af-dYT"/>
+                            <constraint firstItem="0zl-BI-yrm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TBc-1J-u3a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0zl-BI-yrm" secondAttribute="trailing" constant="20" id="c4g-wc-00w"/>
+                            <constraint firstItem="0zl-BI-yrm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lRa-Vg-3rr"/>
+                            <constraint firstItem="MFz-x5-4MO" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="25:112" id="vKN-ed-43M"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bobs-burgers" width="280" height="279.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
