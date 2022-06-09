@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4B650E19284FE1FB00640536 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B650E18284FE1FB00640536 /* Character.swift */; };
 		4B650E1B284FF8B700640536 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B650E1A284FF8B700640536 /* CharacterTableViewCell.swift */; };
+		4B650E1D28509DD600640536 /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B650E1C28509DD600640536 /* Seeds.swift */; };
+		4B650E2328512BF700640536 /* CharacterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B650E2228512BF700640536 /* CharacterAPI.swift */; };
 		4B6AC511284FCB600037EBA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6AC510284FCB600037EBA7 /* AppDelegate.swift */; };
 		4B6AC513284FCB610037EBA7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6AC512284FCB610037EBA7 /* SceneDelegate.swift */; };
 		4B6AC518284FCB610037EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6AC516284FCB610037EBA7 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 /* Begin PBXFileReference section */
 		4B650E18284FE1FB00640536 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		4B650E1A284FF8B700640536 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		4B650E1C28509DD600640536 /* Seeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
+		4B650E2228512BF700640536 /* CharacterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPI.swift; sourceTree = "<group>"; };
 		4B6AC50D284FCB600037EBA7 /* BobsBDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobsBDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6AC510284FCB600037EBA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6AC512284FCB610037EBA7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4B650E2128512BDA00640536 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4B650E2228512BF700640536 /* CharacterAPI.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4B6AC504284FCB600037EBA7 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +143,7 @@
 			children = (
 				4B6AC510284FCB600037EBA7 /* AppDelegate.swift */,
 				4B6AC512284FCB610037EBA7 /* SceneDelegate.swift */,
+				4B650E2128512BDA00640536 /* Services */,
 				4B650E17284FE1E800640536 /* Models */,
 				4B6AC540284FD0270037EBA7 /* Scenes */,
 				4B6AC516284FCB610037EBA7 /* Main.storyboard */,
@@ -146,6 +159,7 @@
 			children = (
 				4B6AC54E284FD2C90037EBA7 /* Scenes */,
 				4B6AC527284FCB620037EBA7 /* BobsBDemoTests.swift */,
+				4B650E1C28509DD600640536 /* Seeds.swift */,
 			);
 			path = BobsBDemoTests;
 			sourceTree = "<group>";
@@ -340,6 +354,7 @@
 				4B6AC55F284FD33C0037EBA7 /* ListCharactersWorker.swift in Sources */,
 				4B650E1B284FF8B700640536 /* CharacterTableViewCell.swift in Sources */,
 				4B6AC561284FD33C0037EBA7 /* ListCharactersModels.swift in Sources */,
+				4B650E2328512BF700640536 /* CharacterAPI.swift in Sources */,
 				4B6AC562284FD33C0037EBA7 /* ListCharactersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +365,7 @@
 			files = (
 				4B6AC555284FD3100037EBA7 /* ListCharactersInteractorTests.swift in Sources */,
 				4B6AC557284FD3100037EBA7 /* ListCharactersPresenterTests.swift in Sources */,
+				4B650E1D28509DD600640536 /* Seeds.swift in Sources */,
 				4B6AC554284FD3100037EBA7 /* ListCharactersViewControllerTests.swift in Sources */,
 				4B6AC528284FCB620037EBA7 /* BobsBDemoTests.swift in Sources */,
 				4B6AC556284FD3100037EBA7 /* ListCharactersWorkerTests.swift in Sources */,

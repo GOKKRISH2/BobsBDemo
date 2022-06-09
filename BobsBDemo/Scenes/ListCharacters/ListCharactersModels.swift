@@ -25,7 +25,7 @@ enum ListCharacters
     }
     struct ViewModel {
         struct DisplayedCharacter {
-          var id: String
+          var id: Int
           var name: String
           var image: String
           var voicedBy: String

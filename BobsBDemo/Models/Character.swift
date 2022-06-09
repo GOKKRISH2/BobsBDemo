@@ -8,20 +8,26 @@
 import Foundation
 
 // MARK: - Character
-struct Character: Equatable {
+struct Character: Equatable, Codable {
     
     let id: Int
-    let name: String
-    let image: String
-    let gender: String
-    let hairColor: String
+    let name: String?
+    let image: String?
+    let gender: String?
+    let hairColor: String?
     let occupation: String?
-    let firstEpisode: String
+    let firstEpisode: String?
     let voicedBy: String?
-    let url: String
-    let wikiURL: String
+    let url: String?
+    let wikiURL: String?
     let age: String?
     let relatives: [Relative]?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, image, gender, hairColor, occupation, firstEpisode, voicedBy, url
+        case wikiURL
+        case age, relatives
+    }
 }
 
 func == (lhs: Character, rhs: Character) -> Bool {
@@ -40,11 +46,17 @@ func == (lhs: Character, rhs: Character) -> Bool {
 }
 
 // MARK: - Relative
-struct Relative: Equatable {
-    let name: String
+struct Relative: Equatable, Codable {
+    let name: String?
     let wikiURL: String?
     let relationship: String?
     let url: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case wikiURL
+        case relationship, url
+    }
 }
 
 func == (lhs: Relative, rhs: Relative) -> Bool {
@@ -53,3 +65,4 @@ func == (lhs: Relative, rhs: Relative) -> Bool {
     && lhs.wikiURL == rhs.wikiURL
     && lhs.relationship == rhs.relationship
 }
+

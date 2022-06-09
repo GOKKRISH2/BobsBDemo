@@ -12,9 +12,32 @@
 
 import UIKit
 
-class ListCharactersWorker
+class ListCharactersWorker {
+    var charactersStore: CharactersStoreProtocol
+    
+    init(charactersStore: CharactersStoreProtocol)
+    {
+      self.charactersStore = charactersStore
+    }
+    func fetchCharacters(completionHandler: @escaping ([Character]) -> Void) {
+        charactersStore.fetchCharacters { (characters: [Character]) -> Void in
+            DispatchQueue.main.async {
+              completionHandler(characters)
+          }
+        }
+      }
+}
+
+protocol CharactersStoreProtocol
 {
-  func doSomeWork()
-  {
-  }
+  // MARK: CRUD operations - Optional error
+  
+    func fetchCharacters(completionHandler: @escaping ([Character]) -> Void)
+}
+
+protocol CharactersStoreUtilityProtocol {}
+
+enum CharactersStoreError: Equatable, Error
+{
+  case CannotFetch(String)
 }

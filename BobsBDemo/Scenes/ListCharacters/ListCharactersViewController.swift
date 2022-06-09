@@ -89,7 +89,7 @@ class ListCharactersViewController: UIViewController, ListCharactersDisplayLogic
   
   func displayFetchCharacters(viewModel: ListCharacters.FetchCharacters.ViewModel)
   {
-    //nameTextField.text = viewModel.name
+      displayedCharacters = viewModel.displayedCharacter
       tableView.reloadData()
   }
 }

@@ -18,6 +18,7 @@ class ListCharactersWorkerTests: XCTestCase
   // MARK: Subject under test
   
   var sut: ListCharactersWorker!
+    static var testCharacters: [Character]!
   
   // MARK: Test lifecycle
   
@@ -36,19 +37,39 @@ class ListCharactersWorkerTests: XCTestCase
   
   func setupListCharactersWorker()
   {
-    sut = ListCharactersWorker()
+      sut = ListCharactersWorker(charactersStore: CharacterAPISpy())
+      ListCharactersWorkerTests.testCharacters = [Seeds.Charecters.testCharacter1,Seeds.Charecters.testCharacter2]
   }
   
   // MARK: Test doubles
+    class CharacterAPISpy: CharacterAPI {
+        
+        var fetchCharactersCalled = false
+        
+        override func fetchCharacters(completionHandler: @escaping ([Character]) -> Void) {
+            fetchCharactersCalled = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                completionHandler (ListCharactersWorkerTests.testCharacters)
+            }
+        }
+    }
   
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: - Tests
     
-    // When
-    
-    // Then
-  }
+    func testFetchCharactersShouldReturnListOfCharacters() {
+      // Given
+        let listCharactersAPISpy = sut.charactersStore as! CharacterAPISpy
+      // When
+      var fetchedCharacters = [Character]()
+      let expect = expectation(description: "Wait for fetchCharacters() to return")
+        sut.fetchCharacters(completionHandler: { (characters) in
+            fetchedCharacters = characters
+            expect.fulfill()
+        })
+      waitForExpectations(timeout: 1.1)
+
+      // Then
+        XCTAssert(listCharactersAPISpy.fetchCharactersCalled, "Calling fetchCharacters() should ask the data store for a list of Characters")
+      XCTAssertEqual(fetchedCharacters.count, ListCharactersWorkerTests.testCharacters.count, "fetchCharacters() should return a list of Characters")
+    }
 }

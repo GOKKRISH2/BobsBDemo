@@ -25,17 +25,17 @@ protocol ListCharactersDataStore
 class ListCharactersInteractor: ListCharactersBusinessLogic, ListCharactersDataStore
 {
   var presenter: ListCharactersPresentationLogic?
-  var worker: ListCharactersWorker?
+    var worker = ListCharactersWorker(charactersStore: CharacterAPI())
     var characters: [Character]?
   
   // MARK: Do something
   
   func fetchCharacters(request: ListCharacters.FetchCharacters.Request)
   {
-    worker = ListCharactersWorker()
-    worker?.doSomeWork()
-      let charecters = Character(id: 1, name: "", image: "", gender: "", hairColor: "", occupation: "", firstEpisode: "", voicedBy: "", url: "", wikiURL: "", age: "", relatives: [Relative(name: "", wikiURL: "", relationship: "", url: "")])
-      let response = ListCharacters.FetchCharacters.Response(characters: [charecters])
-    presenter?.presentSomething(response: response)
+      worker.fetchCharacters(completionHandler: { (characters) in
+          self.characters = characters
+          let response = ListCharacters.FetchCharacters.Response(characters: characters)
+          self.presenter?.presentFetchCharacters(response: response)
+      })
   }
 }

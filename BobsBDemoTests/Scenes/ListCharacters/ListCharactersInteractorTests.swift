@@ -41,29 +41,45 @@ class ListCharactersInteractorTests: XCTestCase
   
   // MARK: Test doubles
   
-  class ListCharactersPresentationLogicSpy: ListCharactersPresentationLogic
-  {
-    var presentSomethingCalled = false
+  class ListCharactersPresentationLogicSpy: ListCharactersPresentationLogic {
+    var presentFetchCharactersCalled = false
     
-    func presentSomething(response: ListCharacters.FetchCharacters.Response)
-    {
-      presentSomethingCalled = true
+    func presentFetchCharacters(response: ListCharacters.FetchCharacters.Response) {
+        presentFetchCharactersCalled = true
     }
   }
+    
+    class ListCharactersWorkerSpy: ListCharactersWorker {
+      // MARK: Method call expectations
+      
+      var fetchCharactersCalled = false
+      
+      // MARK: Spied methods
+      
+        override func fetchCharacters(completionHandler: @escaping ([Character]) -> Void) {
+        fetchCharactersCalled = true
+            completionHandler([Seeds.Charecters.testCharacter1, Seeds.Charecters.testCharacter2])
+      }
+    }
   
   // MARK: Tests
   
-  func testDoSomething()
+  func testFetchCharacterShouldAskListCharactersWorkerToFetchCharactersAndPresentersToFormatResult()
   {
     // Given
-    let spy = ListCharactersPresentationLogicSpy()
-    sut.presenter = spy
-    let request = ListCharacters.FetchCharacters.Request()
-    
+    let listCharactersPresentationLogicSpy = ListCharactersPresentationLogicSpy()
+    sut.presenter = listCharactersPresentationLogicSpy
+      
+      let lististCharactersWorkerSpy = ListCharactersWorkerSpy(charactersStore: CharacterAPI())
+      sut.worker = lististCharactersWorkerSpy
+      
     // When
+      let request = ListCharacters.FetchCharacters.Request()
     sut.fetchCharacters(request: request)
     
     // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+      XCTAssert(lististCharactersWorkerSpy.fetchCharactersCalled, "fetchCharacters() should ask the CharacterWorker to fetch result")
+    XCTAssertTrue(listCharactersPresentationLogicSpy.presentFetchCharactersCalled, "fetchCharacters() should ask presenter to format characters result")
+      
   }
 }

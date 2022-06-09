@@ -82,7 +82,7 @@ class ListCharactersViewControllerTests: XCTestCase {
     // Given
     let tableViewSpy = TableViewSpy()
     sut.tableView = tableViewSpy
-      let displayCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: "1", name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
+      let displayCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: 1, name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
     let viewModel = ListCharacters.FetchCharacters.ViewModel(displayedCharacter: displayCharacter)
     
     // When
@@ -115,21 +115,21 @@ class ListCharactersViewControllerTests: XCTestCase {
         // Given
         let tableView = UITableView()
         tableView.dataSource = sut
-        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: "1", name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
+        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: 1, name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
         sut.displayedCharacters = testDisplayedCharacter
         
         // When
         let numberOfRows = tableView.numberOfRows(inSection: 0)
         
         // Then
-        XCTAssertEqual(numberOfRows, testDisplayedCharacter.count, "The number of table view rows should equal the number of orders to display")
+        XCTAssertEqual(numberOfRows, testDisplayedCharacter.count, "The number of table view rows should equal the number of characters to display")
     }
     
     func testTableViewCellHasTheExpectedViews() {
         // Given
         _ = sut.view
         let tableView = sut.tableView!
-        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: "1", name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
+        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: 1, name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test")]
         sut.displayedCharacters = testDisplayedCharacter
         tableView.reloadData()
         
@@ -142,12 +142,12 @@ class ListCharactersViewControllerTests: XCTestCase {
         XCTAssertNotNil(cell.characterVoiceByLabel,"A label to show character voice by should be there")
     }
     
-    func testShouldConfigureTableViewToDisplayOrders() {
+    func testShouldConfigureTableViewToDisplayCharacters() {
         
         // Given
         _ = sut.view
         let tableView = sut.tableView!
-        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: "1", name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test voice by")]
+        let testDisplayedCharacter = [ListCharacters.FetchCharacters.ViewModel.DisplayedCharacter(id: 1, name: "test", image: "https://bobsburgers-api.herokuapp.com/images/characters/1.jpg", voicedBy: "test voice by")]
         sut.displayedCharacters = testDisplayedCharacter
 
         tableView.reloadData()

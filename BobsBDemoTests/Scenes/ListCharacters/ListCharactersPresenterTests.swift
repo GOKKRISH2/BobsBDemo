@@ -46,24 +46,36 @@ class ListCharactersPresenterTests: XCTestCase
       
     var displayFetchCharactersCalled = false
     
+      var viewModel: ListCharacters.FetchCharacters.ViewModel!
+      
     func displayFetchCharacters(viewModel: ListCharacters.FetchCharacters.ViewModel)
     {
         displayFetchCharactersCalled = true
+        self.viewModel = viewModel
     }
   }
   
   // MARK: Tests
   
-  func testPresentSomething()
+  func testPresentFetchedCharactersShouldFormatFetchedCharactersForDisplay()
   {
     // Given
     let spy = ListCharactersDisplayLogicSpy()
     sut.viewController = spy
-      let charecters = Character(id: 1, name: "", image: "", gender: "", hairColor: "", occupation: "", firstEpisode: "", voicedBy: "", url: "", wikiURL: "", age: "", relatives: [Relative(name: "", wikiURL: "", relationship: "", url: "")])
+      
     // When
-      sut.presentSomething(response: ListCharacters.FetchCharacters.Response(characters: [charecters]))
+      let testCharacter1 = Seeds.Charecters.testCharacter1
+      
+      let characters = [testCharacter1]
+      
+      let response = ListCharacters.FetchCharacters.Response(characters: characters)
+      sut.presentFetchCharacters(response: response)
     
     // Then
-    XCTAssertTrue(spy.displayFetchCharactersCalled, "presentSomething(response:) should ask the view controller to display the result")
+      let displayedCharacters = spy.viewModel.displayedCharacter
+      for displayedCharacter in displayedCharacters {
+        XCTAssertEqual(displayedCharacter.id, 1, "Presenting fetched orders should properly format order ID")
+          XCTAssertEqual(displayedCharacter.name, "", "Presenting fetched orders should properly format order date")
+      }
   }
 }
