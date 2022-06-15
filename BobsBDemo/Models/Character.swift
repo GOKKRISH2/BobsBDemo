@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Character
-struct Character: Equatable, Codable {
+struct Character: Codable, Equatable {
     
     let id: Int
     let name: String?
@@ -22,47 +22,13 @@ struct Character: Equatable, Codable {
     let wikiURL: String?
     let age: String?
     let relatives: [Relative]?
-    
-    enum CodingKeys: String, CodingKey {
-        case id, name, image, gender, hairColor, occupation, firstEpisode, voicedBy, url
-        case wikiURL
-        case age, relatives
-    }
-}
-
-func == (lhs: Character, rhs: Character) -> Bool {
-    lhs.id == rhs.id
-    && lhs.name == rhs.name
-    && lhs.image == rhs.image
-    && lhs.gender == rhs.gender
-    && lhs.hairColor == rhs.hairColor
-    && lhs.occupation == rhs.occupation
-    && lhs.firstEpisode == rhs.firstEpisode
-    && lhs.voicedBy == rhs.voicedBy
-    && lhs.url == rhs.url
-    && lhs.wikiURL == rhs.wikiURL
-    && lhs.age == rhs.age
-    && lhs.relatives == rhs.relatives
 }
 
 // MARK: - Relative
-struct Relative: Equatable, Codable {
+struct Relative: Codable, Equatable {
     let name: String?
     let wikiURL: String?
     let relationship: String?
     let url: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case wikiURL
-        case relationship, url
-    }
-}
-
-func == (lhs: Relative, rhs: Relative) -> Bool {
-    lhs.name == rhs.name
-    && lhs.url == rhs.url
-    && lhs.wikiURL == rhs.wikiURL
-    && lhs.relationship == rhs.relationship
 }
 

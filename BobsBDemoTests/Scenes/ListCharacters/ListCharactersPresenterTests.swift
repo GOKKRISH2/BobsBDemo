@@ -75,7 +75,7 @@ class ListCharactersPresenterTests: XCTestCase
       let displayedCharacters = spy.viewModel.displayedCharacter
       for displayedCharacter in displayedCharacters {
         XCTAssertEqual(displayedCharacter.id, 1, "Presenting fetched orders should properly format order ID")
-          XCTAssertEqual(displayedCharacter.name, "", "Presenting fetched orders should properly format order date")
+          XCTAssertEqual(displayedCharacter.name, "test character 1", "Presenting fetched orders should properly format order date")
       }
   }
 }
